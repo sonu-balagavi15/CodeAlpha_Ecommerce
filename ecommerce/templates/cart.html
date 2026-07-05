@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+        }
+
+        .container{
+            width:80%;
+            margin:auto;
+            margin-top:40px;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:8px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+        }
+
+        img{
+            width:120px;
+            height:120px;
+            object-fit:cover;
+        }
+
+        button{
+            padding:10px 20px;
+            background:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        a{
+            text-decoration:none;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1 align="center">🛒 Shopping Cart</h1>
+
+{% if items %}
+
+    {% for item in items %}
+
+    <div class="card">
+
+        <h2>{{ item.product.name }}</h2>
+
+        <img src="{{ item.product.image.url }}">
+
+        <p><b>Price:</b> ₹{{ item.product.price }}</p>
+
+        <p><b>Quantity:</b> {{ item.quantity }}</p>
+
+        <p><b>Total:</b> ₹{{ item.product.price|floatformat:2 }}</p>
+
+    </div>
+
+    {% endfor %}
+
+    <h2>Grand Total: ₹{{ total }}</h2>
+
+    <br>
+
+    <a href="{% url 'checkout' %}">
+        <button>Proceed to Checkout</button>
+    </a>
+
+{% else %}
+
+    <p align="center">Your cart is currently empty.</p>
+
+{% endif %}
+
+<br><br>
+
+<p align="center">
+    <a href="/">← Continue Shopping</a>
+</p>
+
+</div>
+
+</body>
+</html>

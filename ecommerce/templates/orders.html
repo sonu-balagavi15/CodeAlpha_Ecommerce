@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+</head>
+<body>
+
+<h1>📦 My Orders</h1>
+
+{% for order in orders %}
+
+<div>
+
+<h3>{{ order.product.name }}</h3>
+
+<p>Quantity : {{ order.quantity }}</p>
+
+<p>Total : ₹{{ order.total_price }}</p>
+
+<p>Ordered On : {{ order.ordered_at }}</p>
+
+<hr>
+
+</div>
+
+{% empty %}
+
+<p>No orders yet.</p>
+
+{% endfor %}
+
+<br>
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>

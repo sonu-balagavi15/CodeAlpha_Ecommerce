@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f4f4;
+        }
+
+        .container{
+            width:70%;
+            margin:auto;
+            background:white;
+            padding:30px;
+            margin-top:40px;
+            border-radius:10px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        table th,
+        table td{
+            border:1px solid #ddd;
+            padding:10px;
+        }
+
+        button{
+            padding:12px 20px;
+            background:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Checkout</h1>
+
+<table>
+
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Quantity</th>
+<th>Total</th>
+</tr>
+
+{% for item in items %}
+
+<tr>
+
+<td>{{ item.product.name }}</td>
+
+<td>₹{{ item.product.price }}</td>
+
+<td>{{ item.quantity }}</td>
+
+<td>₹{{ item.product.price|floatformat:2 }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<h2>Grand Total : ₹{{ total }}</h2>
+
+<a href="{% url 'place_order' %}">
+    <button>Place Order</button>
+</a>
+
+</div>
+
+</body>
+</html>
