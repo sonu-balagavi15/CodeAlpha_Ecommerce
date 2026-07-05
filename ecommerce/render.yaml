@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: codealpha-ecommerce
-    env: python
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn ecommerce.wsgi:application"
